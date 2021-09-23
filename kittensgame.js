@@ -114,12 +114,12 @@ if (window.location.origin !== 'http://kittensgame.com') return;
                         
                         var maxValue = Number(row.maxValue);
                         if (value + addValue > maxValue) {
-                            gamePage.resPool.resourceMap[row.key].value = maxValue;
+                            gamePage.resPool.get(row.key).value = maxValue;
                         } else {
-                            gamePage.resPool.resourceMap[row.key].value += addValue;
+                            gamePage.resPool.get(row.key).value += addValue;
                         }
                     } else {
-                        gamePage.resPool.resourceMap[row.key].value += addValue;
+                        gamePage.resPool.get(row.key).value += addValue;
                     }
                 },
                 onClose: function () {
