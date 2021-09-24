@@ -28,31 +28,33 @@ if (window.location.origin !== 'http://kittensgame.com') return;
 
     function createApp() {
         var html = `
-        <div id="app" style="position: fixed; right: 0; top: 0; user-select: none; height: 100vh; width: 300px; background-color: #eee; overflow: auto; box-sizing: border-box; padding: 15px; z-index: 1000; display: none;">
+        <div id="app" style="position: fixed; right: 0; top: 0; user-select: none; height: 100vh; width: 600px; background-color: #eee; overflow: auto; box-sizing: border-box; padding: 15px; z-index: 1000; display: none;">
             <div style="padding-bottom: 15px; text-align: right;">
                 <button @click="onClose">关闭窗口</button>
             </div>
-            <div v-for="(item, index) in list" :key="index" style="padding-bottom: 15px;">
-                <div style="color: #4fc08d;">物品名称：{{ item.name }}</div>
-                <div>
-                    <div style="margin-bottom: 5px;">
-                        <span>添加数量：</span>
-                        <input 
-                            type="number"
-                            v-model="item.value" 
-                            style="width: 150px;"
-                            readonly
-                        />
-                    </div>
-                    <div style="margin-bottom: 5px;">
-                        <button @click="addValue(item, 1000)">+1k</button>
-                        <button @click="addValue(item, 10000)">+10k</button>
-                        <button @click="addValue(item, 100000)">+100k</button>
-                        <button @click="addValue(item, 1000000)">+1000k</button>
-                    </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+                <div v-for="(item, index) in list" :key="index" style="padding-bottom: 15px; width: 265px;">
+                    <div style="color: #4fc08d;">物品名称：{{ item.name }}</div>
                     <div>
-                        <button @click="setZero(item)">清零</button>
-                        <button @click="onSubmit(item)">确定</button>
+                        <div style="margin-bottom: 5px;">
+                            <span>添加数量：</span>
+                            <input 
+                                type="number"
+                                v-model="item.value" 
+                                style="width: 150px;"
+                                readonly
+                            />
+                        </div>
+                        <div style="margin-bottom: 5px;">
+                            <button @click="addValue(item, 1000)">+1k</button>
+                            <button @click="addValue(item, 10000)">+10k</button>
+                            <button @click="addValue(item, 100000)">+100k</button>
+                            <button @click="addValue(item, 1000000)">+1000k</button>
+                        </div>
+                        <div>
+                            <button @click="setZero(item)">清零</button>
+                            <button @click="onSubmit(item)">确定</button>
+                        </div>
                     </div>
                 </div>
             </div>
